@@ -45,6 +45,7 @@ class MainActivity : ComponentActivity() {
                 Column(
                     modifier = Modifier.padding(8.dp)
                 ) {
+                    Title(text = "Buttons")
                     EnabledSwitch(
                         checked = enabledStated,
                         onCheckedChange = { newValue -> enabledStated = newValue }
@@ -59,7 +60,20 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
 
+@Composable
+fun Title(text: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            text = text,
+            color = MaterialTheme.colors.onSurface,
+            style = MaterialTheme.typography.h6
+        )
+    }
 }
 
 @Composable
@@ -79,6 +93,7 @@ fun EnabledSwitch(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            color = MaterialTheme.colors.onSurface,
             text = "Enabled"
         )
         Switch(checked = checked, onCheckedChange = null)
