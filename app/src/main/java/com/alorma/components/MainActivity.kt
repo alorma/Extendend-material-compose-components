@@ -18,13 +18,17 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.alorma.components.samples.ButtonColorsSample
 import com.alorma.components.samples.CardColorsSample
+import com.alorma.components.samples.SampleTopAppBar
 import com.alorma.components.ui.theme.ExtendedMaterialComposecomponentsTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -33,7 +37,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ExtendedMaterialComposecomponentsTheme {
-                Scaffold {
+                val coroutineScope = rememberCoroutineScope()
+                val scaffoldState = rememberScaffoldState()
+
+                Scaffold(
+                    scaffoldState = scaffoldState,
+                    topBar = {
+                        SampleTopAppBar(
+                            onActionClick = { action ->
+                                coroutineScope.launch {
+                                    scaffoldState.snackbarHostState.showSnackbar(
+                                        message = "${action.title} clicked"
+                                    )
+                                }
+                                true
+                            }
+                        )
+                    }
+                ) {
                     val scrollState = rememberScrollState()
                     LazyColumn(
                         modifier = Modifier
