@@ -3,6 +3,7 @@ package com.alorma.components
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,9 +11,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.alorma.components.buttons.ErrorButton
 import com.alorma.components.buttons.ErrorOutlinedButton
@@ -31,28 +40,59 @@ class MainActivity : ComponentActivity() {
         setContent {
             ExtendedMaterialComposecomponentsTheme {
 
+                var enabledStated by remember { mutableStateOf(true) }
+
                 Column(
                     modifier = Modifier.padding(8.dp)
                 ) {
+                    EnabledSwitch(
+                        checked = enabledStated,
+                        onCheckedChange = { newValue -> enabledStated = newValue }
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
-                    FilledButtons()
+                    FilledButtons(enabled = enabledStated)
                     Spacer(modifier = Modifier.height(16.dp))
-                    OutlinedButtons()
+                    OutlinedButtons(enabled = enabledStated)
                     Spacer(modifier = Modifier.height(16.dp))
-                    TextButtons()
+                    TextButtons(enabled = enabledStated)
                 }
             }
         }
     }
+
 }
 
 @Composable
-fun FilledButtons() {
+fun EnabledSwitch(
+    checked: Boolean = true,
+    onCheckedChange: (Boolean) -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .height(48.dp)
+            .clip(shape = MaterialTheme.shapes.medium)
+            .clickable { onCheckedChange(!checked) }
+            .padding(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f),
+            text = "Enabled"
+        )
+        Switch(checked = checked, onCheckedChange = null)
+    }
+}
+
+@Composable
+fun FilledButtons(enabled: Boolean) {
     Row {
         PrimaryButton(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            enabled = enabled,
             onClick = {},
         ) {
             Text(text = "Primary")
@@ -62,6 +102,7 @@ fun FilledButtons() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            enabled = enabled,
             onClick = {},
         ) {
             Text(text = "Secondary")
@@ -71,6 +112,7 @@ fun FilledButtons() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            enabled = enabled,
             onClick = {},
         ) {
             Text(text = "Error")
@@ -79,12 +121,13 @@ fun FilledButtons() {
 }
 
 @Composable
-fun OutlinedButtons() {
+fun OutlinedButtons(enabled: Boolean) {
     Row {
         PrimaryOutlinedButton(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            enabled = enabled,
             onClick = {},
         ) {
             Text(text = "Primary")
@@ -94,6 +137,7 @@ fun OutlinedButtons() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            enabled = enabled,
             onClick = {},
         ) {
             Text(text = "Secondary")
@@ -103,6 +147,7 @@ fun OutlinedButtons() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            enabled = enabled,
             onClick = {},
         ) {
             Text(text = "Error")
@@ -111,12 +156,13 @@ fun OutlinedButtons() {
 }
 
 @Composable
-fun TextButtons() {
+fun TextButtons(enabled: Boolean) {
     Row {
         PrimaryTextButton(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            enabled = enabled,
             onClick = {},
         ) {
             Text(text = "Primary")
@@ -126,6 +172,7 @@ fun TextButtons() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            enabled = enabled,
             onClick = {},
         ) {
             Text(text = "Secondary")
@@ -135,6 +182,7 @@ fun TextButtons() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
+            enabled = enabled,
             onClick = {},
         ) {
             Text(text = "Error")

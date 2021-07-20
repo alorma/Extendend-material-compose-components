@@ -12,11 +12,13 @@ import androidx.compose.ui.Modifier
 @Composable
 fun PrimaryButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
     Button(
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
         content = content,
@@ -26,11 +28,13 @@ fun PrimaryButton(
 @Composable
 fun SecondaryButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
     Button(
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
         content = content,
@@ -40,11 +44,13 @@ fun SecondaryButton(
 @Composable
 fun ErrorButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
     Button(
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.error),
         content = content,
@@ -54,11 +60,13 @@ fun ErrorButton(
 @Composable
 fun PrimaryOutlinedButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
     OutlinedButton(
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
         colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colors.primary),
         content = content,
@@ -68,11 +76,13 @@ fun PrimaryOutlinedButton(
 @Composable
 fun SecondaryOutlinedButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
     OutlinedButton(
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
         colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colors.secondary),
         content = content,
@@ -82,11 +92,13 @@ fun SecondaryOutlinedButton(
 @Composable
 fun ErrorOutlinedButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
     OutlinedButton(
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
         colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colors.error),
         content = content,
@@ -96,11 +108,13 @@ fun ErrorOutlinedButton(
 @Composable
 fun PrimaryTextButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
     TextButton(
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
         colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colors.primary),
         content = content,
@@ -110,11 +124,13 @@ fun PrimaryTextButton(
 @Composable
 fun SecondaryTextButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
     TextButton(
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
         colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colors.secondary),
         content = content,
@@ -124,11 +140,13 @@ fun SecondaryTextButton(
 @Composable
 fun ErrorTextButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
     TextButton(
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
         colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colors.error),
         content = content,
