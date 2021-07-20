@@ -15,6 +15,12 @@ android {
         targetSdk = 30
     }
 
+    buildTypes {
+        named("release") {
+            isMinifyEnabled = false
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
