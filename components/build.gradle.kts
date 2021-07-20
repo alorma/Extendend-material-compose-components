@@ -3,6 +3,10 @@ plugins {
     id("kotlin-android")
 }
 
+ext["PUBLISH_ARTIFACT_ID"] = "compose-components"
+
+apply(from = "${rootProject.projectDir}/scripts/publish-module.gradle")
+
 android {
     compileSdk = 30
 
