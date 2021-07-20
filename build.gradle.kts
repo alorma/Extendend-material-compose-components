@@ -8,12 +8,16 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:7.0.0-beta05")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle.kts files
+        classpath("io.github.gradle-nexus:publish-plugin:1.1.0")
+        classpath("io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.22.0")
     }
+}
+
+plugins {
+    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 }
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+apply(from = "${rootDir}/scripts/publish-root.gradle")
