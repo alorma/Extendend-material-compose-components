@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
                             onActionClick = { action ->
                                 coroutineScope.launch {
                                     scaffoldState.snackbarHostState.showSnackbar(
-                                        message = "${action.title} clicked"
+                                        message = "Clicked: ${action.contentDescription}"
                                     )
                                 }
                                 true
