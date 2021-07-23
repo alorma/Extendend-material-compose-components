@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -85,14 +84,13 @@ class MainActivity : ComponentActivity() {
 private fun fakeBanner(
     onClick: () -> Unit,
 ): BannerMessage = BannerMessage(
-    text = "Your internet connection was lost.",
-    //text = "Your internet connection was lost. Check network connection",
-    //icon = Icons.Default.Wifi,
+    text = "Your internet connection was lost. Check network connection",
+    icon = Icons.Default.Wifi,
     firstButton = BannerButton(
         text = "FIX IT",
         onClick = onClick,
     ),
-    //secondButton = BannerButton(text = "LEARN MORE", onClick = onClick, ),
+    secondButton = BannerButton(text = "LEARN MORE", onClick = onClick),
 )
 
 data class BannerMessage(
@@ -130,7 +128,8 @@ fun DemoBanner(bannerState: BannerMessage) {
         if (bannerState.icon != null) {
             Row(
                 modifier = Modifier
-                    .padding(horizontal = 12.dp),
+                    .padding(horizontal = 12.dp)
+                    .padding(top = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
