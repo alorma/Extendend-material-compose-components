@@ -1,6 +1,5 @@
 package com.alorma.components.buttons
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,7 +9,6 @@ import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.dp
@@ -26,22 +24,13 @@ fun Banner(
     Layout(
         modifier = modifier,
         content = {
-            Box(
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp),
-                contentAlignment = Alignment.CenterStart,
-            ) {
-                ProvideTextStyle(value = MaterialTheme.typography.body2) {
-                    content()
-                }
-            }
-            if (secondButton != null) {
-                Row(modifier = Modifier.padding(horizontal = 8.dp)) {
-                    firstButton()
-                    Spacer(modifier = Modifier.size(8.dp))
+            ProvideTextStyle(value = MaterialTheme.typography.body2, content = content)
+            Row(modifier = Modifier.padding(all = 8.dp)) {
+                if (secondButton != null) {
                     secondButton()
-                }
-            } else {
-                Box(modifier = Modifier.padding(horizontal = 8.dp)) {
+                    Spacer(modifier = Modifier.size(8.dp))
+                    firstButton()
+                } else {
                     firstButton()
                 }
             }
@@ -70,9 +59,9 @@ fun Banner(
             buttonsPlaceable.height,
         ) + dividerPlaceable.height
 
-        if (contentPlaceable.width > constrains.maxWidth - buttonsXOffset) {
-            buttonsYOffset = 8.dp.roundToPx() + contentPlaceable.height
-            boxHeight = buttonsYOffset + buttonsPlaceable.height + 8.dp.roundToPx()
+        if (contentPlaceable.width > buttonsXOffset) {
+            buttonsYOffset = contentPlaceable.height
+            boxHeight = buttonsYOffset + buttonsPlaceable.height
         }
 
         val dividerYOffset = boxHeight - dividerPlaceable.height
