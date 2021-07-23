@@ -42,12 +42,12 @@ afterEvaluate {
 
                 pom {
                     name = project.project.getName()
-                    description = 'Compose settings'
-                    url = 'https://github.com/alorma/Compose-Settings'
+                    description = 'Extended compose components'
+                    url = 'https://github.com/alorma/Extendend-material-compose-components'
                     licenses {
                         license {
                             name = 'Stream License'
-                            url = 'https://github.com/alorma/Compose-Settings/blob/main/LICENSE'
+                            url = 'https://github.com/alorma/Extendend-material-compose-components/blob/main/LICENSE'
                         }
                     }
                     developers {
@@ -58,9 +58,9 @@ afterEvaluate {
                         }
                     }
                     scm {
-                        connection = 'scm:git:github.com/alorma/Compose-Settings.git'
-                        developerConnection = 'scm:git:ssh://github.com/alorma/Compose-Settings.git'
-                        url = 'https://github.com/alorma/Compose-Settings/tree/main'
+                        connection = 'scm:git:github.com/alorma/Extendend-material-compose-components.git'
+                        developerConnection = 'scm:git:ssh://github.com/alorma/Extendend-material-compose-components.git'
+                        url = 'https://github.com/alorma/Extendend-material-compose-components/tree/main'
                     }
                 }
             }
